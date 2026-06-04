@@ -1,5 +1,7 @@
-def main():
-    print("Strava AI Coach")
+from fastapi import FastAPI
 
-if __name__ == "__main__":
-    main()
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Strava AI Coach API is running"}
