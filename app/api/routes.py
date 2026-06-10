@@ -1,10 +1,11 @@
 from fastapi import APIRouter
+from app.core.config import settings
 
 router = APIRouter()
 
 @router.get("/")
 def read_root():
-    return {"message": "Strava AI Coach API is running"}
+    return {"message": f"{settings.app_name} API is running"}
 
 @router.get("/health")
 def health_check():
