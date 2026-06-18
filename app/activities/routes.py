@@ -1,11 +1,13 @@
 from fastapi import APIRouter, HTTPException
 
-from app.activities.schemas import ActivityAnalysis, ActivityDetail, ActivitySummary
+from app.activities.schemas import ActivityDetail, ActivitySummary
 from app.activities.service import (
     get_activity_by_id, 
     get_all_activities,
     get_activity_analysis
 )
+
+from app.analysis.schemas import ActivityAnalysis
 
 router = APIRouter(prefix="/activities", tags=["activities"])
 

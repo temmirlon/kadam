@@ -15,10 +15,3 @@ class ActivityDetail(ActivitySummary):
     max_heartrate: int | None = None
     total_elevation_gain: float | None = None
     strava_url: str | None = None
-
-class ActivityAnalysis(BaseModel):
-    activity_id: int
-    summary: str
-    positives: list[str]
-    improvements: list[str]
-    recommendation: str
