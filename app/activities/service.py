@@ -1,30 +1,4 @@
-fake_activities = [
-    {
-        "id": 1,
-        "name": "Morning Run",
-        "sport_type": "Run",
-        "distance_km": 8.2,
-        "moving_time_minutes": 45,
-        "average_pace": "5:29/km",
-        "average_heartrate": 154,
-        "max_heartrate": 176,
-        "total_elevation_gain": 42.0,
-        "strava_url": "https://www.strava.com/activities/1",
-    },
-
-    {
-        "id": 2,
-        "name": "Evening Ride",
-        "sport_type": "Ride",
-        "distance_km": 32.5,
-        "moving_time_minutes": 78,
-        "average_pace": "24.9 km/h",
-        "average_heartrate": 142,
-        "max_heartrate": 168,
-        "total_elevation_gain": 310.0,
-        "strava_url": "https://www.strava.com/activities/2",
-    },
-]
+from app.activities.fake_data import fake_activities
 
 def get_all_activities():
     return fake_activities
@@ -40,17 +14,17 @@ def get_activity_analysis(activity_id: int):
 
     if activity is None:
         return None
-    
+
     return {
         "activity_id": activity_id,
-        "summary": f"Analysis for {activity["name"]}. This is a fake AI Analysis for now.",
+        "summary": f"Analysis for {activity['name']}. This is a fake AI analysis for now.",
         "positives": [
             "Good consistency during the session.",
             "Solid aerobic effort.",
-            ],
+        ],
         "improvements": [
             "Try to keep the effort more controlled in the second half.",
             "Add more context later: sleep, fatigue and weather.",
-            ],
+        ],
         "recommendation": "For the next similar session, start slightly easier and focus on stable pacing.",
     }

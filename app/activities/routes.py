@@ -30,6 +30,6 @@ def get_analysis(activity_id: int):
     analysis = get_activity_analysis(activity_id)
 
     if analysis is None:
-        return HTTPException(status_code=404, detail="Activity not found..")
+        raise HTTPException(status_code=404, detail="Activity not found..")
     
     return analysis
