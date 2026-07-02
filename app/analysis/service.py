@@ -1,3 +1,5 @@
+from app.analysis.prompts import build_training_analysis_prompt
+
 def build_activity_summary(activity: dict) -> str:
     return (
         f"Activity: {activity['name']}\n"
@@ -13,12 +15,14 @@ def build_activity_summary(activity: dict) -> str:
 
 def generate_fake_activity_analysis(activity: dict):
     activity_summary = build_activity_summary(activity)
-    
+    prompt = build_training_analysis_prompt(activity_summary)
+
     return {
         "activity_id": activity["id"],
         "summary": (
             "This is a fake AI analysis for now. "
             f"The future AI model will analyze the following activity data:\n\n{activity_summary}"
+            f"{prompt}"
         ),
         "positives": [
             "Good consistency during the session.",
