@@ -1,5 +1,6 @@
-from app.analysis.ai.fake import FakeAIProvider
+from app.analysis.ai.factory import get_ai_provider
 from app.analysis.prompts import build_training_analysis_prompt
+from app.core.config import settings
 
 
 def build_activity_summary(activity: dict) -> str:
@@ -19,7 +20,7 @@ def generate_fake_activity_analysis(activity: dict):
     activity_summary = build_activity_summary(activity)
     prompt = build_training_analysis_prompt(activity_summary)
 
-    ai_provider = FakeAIProvider()
+    ai_provider = get_ai_provider(settings.ai_provider)
     ai_response = ai_provider.generate_text(prompt)
 
     return {
