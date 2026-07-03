@@ -1,4 +1,6 @@
+from app.analysis.ai.fake import FakeAIProvider
 from app.analysis.prompts import build_training_analysis_prompt
+
 
 def build_activity_summary(activity: dict) -> str:
     return (
@@ -17,13 +19,12 @@ def generate_fake_activity_analysis(activity: dict):
     activity_summary = build_activity_summary(activity)
     prompt = build_training_analysis_prompt(activity_summary)
 
+    ai_provider = FakeAIProvider()
+    ai_response = ai_provider.generate_text(prompt)
+
     return {
         "activity_id": activity["id"],
-        "summary": (
-            "This is a fake AI analysis for now. "
-            f"The future AI model will analyze the following activity data:\n\n{activity_summary}"
-            f"{prompt}"
-        ),
+        "summary": ai_response,
         "positives": [
             "Good consistency during the session.",
             "Solid aerobic effort.",
