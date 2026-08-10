@@ -36,7 +36,12 @@ def callback(
             "error": "Authorization code is missing",
         }
 
+    provider = StravaProvider()
+    token_data = provider.exchange_authorization_code(code)
+
     return {
         "status": "authorization_code_received",
+        "athlete_id": token_data["athlete"]["id"],
+        "expires_at": token_data["expires_at"],
         "scope": scope,
     }
